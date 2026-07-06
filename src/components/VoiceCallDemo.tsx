@@ -160,11 +160,9 @@ export default function VoiceCallDemo() {
     rafRef.current = requestAnimationFrame(loop);
   }
 
-  async function runLiveCall(clientSecret: string) {
+  async function runLiveCall(clientSecret: string, mic: MediaStream) {
     setMode("live");
     try {
-      const mic = await navigator.mediaDevices.getUserMedia({ audio: true });
-      micRef.current = mic;
       const pc = new RTCPeerConnection();
       pcRef.current = pc;
       pc.addTrack(mic.getTracks()[0], mic);
@@ -212,12 +210,11 @@ export default function VoiceCallDemo() {
     }
   }
 
-  async function runGeminiCall(cfg: {
-    token: string;
-    model: string;
-    voice: string;
-    instructions: string;
-  }) {
+  async function runGeminiCall(
+    cfg: { token: string; model: string; voice: string; instructions: string },
+    mic: MediaStream,
+    ctx: AudioContext
+  ) {
     setMode("gemini");
     let opened = false;
     const fallback = () => {
@@ -244,7 +241,7 @@ export default function VoiceCallDemo() {
     });
     geminiRef.current = call;
     try {
-      await call.start();
+      await call.start(mic, ctx);
     } catch {
       fallback();
     }
@@ -256,34 +253,56 @@ export default function VoiceCallDemo() {
     cancelledRef.current = false;
     setCaption(null);
     setPhase("ringing"); // butonu hemen gizle, ikinci tıklamayı önle
-    getCtx().resume();
+
+    // AudioContext'i kullanıcı jesti içinde aç/sürdür (iOS şart).
+    const ctx = getCtx();
+    ctx.resume();
     startRingTone();
 
-    // 1. Gemini Live (ücretsiz kotayla test için)
+    // Mikrofonu da jest İÇİNDE, fetch'ten ÖNCE iste. iOS'ta araya await girerse
+    // izin istemi hiç çıkmaz. İzin çıkması için getUserMedia burada olmalı.
+    let mic: MediaStream | null = null;
     try {
-      const g = await fetch("/api/gemini/session", { method: "POST" }).then((r) => r.json());
-      if (cancelledRef.current) return;
-      if (g.mode === "gemini" && g.token) {
-        runGeminiCall(g);
-        return;
-      }
+      mic = await navigator.mediaDevices.getUserMedia({
+        audio: { echoCancellation: true, noiseSuppression: true, channelCount: 1 },
+      });
+      micRef.current = mic;
     } catch {
-      /* sıradaki sağlayıcıya geç */
+      mic = null; // izin reddedildi ya da mikrofon yok → örnek görüşmeye düş
+    }
+    if (cancelledRef.current) return;
+
+    if (mic) {
+      // 1. Gemini Live (ücretsiz kotayla test için)
+      try {
+        const g = await fetch("/api/gemini/session", { method: "POST" }).then((r) => r.json());
+        if (cancelledRef.current) return;
+        if (g.mode === "gemini" && g.token) {
+          runGeminiCall(g, mic, ctx);
+          return;
+        }
+      } catch {
+        /* sıradaki sağlayıcıya geç */
+      }
+
+      // 2. OpenAI Realtime
+      try {
+        const s = await fetch("/api/realtime/session", { method: "POST" }).then((r) => r.json());
+        if (cancelledRef.current) return;
+        if (s.mode === "live" && s.clientSecret) {
+          runLiveCall(s.clientSecret, mic);
+          return;
+        }
+      } catch {
+        /* sim'e düş */
+      }
+
+      // Canlı sağlayıcı yok: mikrofonu bırak, örnek görüşmeye düş
+      mic.getTracks().forEach((t) => t.stop());
+      micRef.current = null;
     }
 
-    // 2. OpenAI Realtime
-    try {
-      const s = await fetch("/api/realtime/session", { method: "POST" }).then((r) => r.json());
-      if (cancelledRef.current) return;
-      if (s.mode === "live" && s.clientSecret) {
-        runLiveCall(s.clientSecret);
-        return;
-      }
-    } catch {
-      /* sim'e düş */
-    }
-
-    // 3. Anahtar yoksa: tarayıcı sesiyle örnek görüşme
+    // 3. Anahtar yok ya da mikrofon reddedildi: tarayıcı sesiyle örnek görüşme
     if (!cancelledRef.current) runSimCall();
   }
 

@@ -24,10 +24,26 @@ function bytesFromBase64(b64: string): Uint8Array {
   return bytes;
 }
 
-function floatTo16BitPCM(input: Float32Array): Uint8Array {
-  const out = new Int16Array(input.length);
-  for (let i = 0; i < input.length; i++) {
-    const s = Math.max(-1, Math.min(1, input[i]));
+// Mikrofon örneklerini (native sampleRate, ör. 48kHz) 16kHz PCM16'ya indir.
+// iOS Safari AudioContext'in istenen sampleRate'ini yok sayabildiği için elle yapılır.
+function downsampleTo16kPCM(input: Float32Array, srcRate: number): Uint8Array {
+  if (srcRate === 16000) {
+    const out = new Int16Array(input.length);
+    for (let i = 0; i < input.length; i++) {
+      const s = Math.max(-1, Math.min(1, input[i]));
+      out[i] = s < 0 ? s * 0x8000 : s * 0x7fff;
+    }
+    return new Uint8Array(out.buffer);
+  }
+  const ratio = srcRate / 16000;
+  const newLen = Math.floor(input.length / ratio);
+  const out = new Int16Array(newLen);
+  for (let i = 0; i < newLen; i++) {
+    const idx = i * ratio;
+    const i0 = Math.floor(idx);
+    const frac = idx - i0;
+    const sample = input[i0] * (1 - frac) + (input[i0 + 1] ?? input[i0]) * frac;
+    const s = Math.max(-1, Math.min(1, sample));
     out[i] = s < 0 ? s * 0x8000 : s * 0x7fff;
   }
   return new Uint8Array(out.buffer);
@@ -35,15 +51,17 @@ function floatTo16BitPCM(input: Float32Array): Uint8Array {
 
 /**
  * Tarayıcıda Gemini Live ile gerçek zamanlı sesli görüşme.
- * Giriş: mikrofon -> 16 kHz mono PCM16. Çıkış: 24 kHz PCM16, sırayla oynatılır.
+ * Mobil uyumu: mikrofon stream'i ve AudioContext DIŞARIDAN (kullanıcı jesti içinde
+ * açılmış olarak) verilir — iOS getUserMedia/AudioContext jest kısıtları için şart.
+ * Giriş: 16 kHz mono PCM16 (elle downsample). Çıkış: 24 kHz PCM16, sırayla oynatılır.
  */
 export class GeminiLiveCall {
   private session: Session | null = null;
-  private inputCtx: AudioContext | null = null;
-  private outputCtx: AudioContext | null = null;
+  private ctx: AudioContext | null = null;
+  private stream: MediaStream | null = null;
   private processor: ScriptProcessorNode | null = null;
   private source: MediaStreamAudioSourceNode | null = null;
-  private stream: MediaStream | null = null;
+  private sink: GainNode | null = null;
   private nextStart = 0;
   private sources = new Set<AudioBufferSourceNode>();
   private muted = false;
@@ -59,15 +77,17 @@ export class GeminiLiveCall {
     private cb: GeminiCallbacks
   ) {}
 
-  async start() {
-    this.stream = await navigator.mediaDevices.getUserMedia({
-      audio: { channelCount: 1, echoCancellation: true, noiseSuppression: true },
-    });
-
-    this.inputCtx = new AudioContext({ sampleRate: 16000 });
-    this.outputCtx = new AudioContext({ sampleRate: 24000 });
-    await this.inputCtx.resume();
-    await this.outputCtx.resume();
+  // stream + ctx kullanıcı jesti içinde açılmış olmalı (startCall onClick).
+  async start(stream: MediaStream, ctx: AudioContext) {
+    this.stream = stream;
+    this.ctx = ctx;
+    if (ctx.state === "suspended") {
+      try {
+        await ctx.resume();
+      } catch {
+        /* yoksay */
+      }
+    }
 
     const ai = new GoogleGenAI({
       apiKey: this.token,
@@ -99,19 +119,24 @@ export class GeminiLiveCall {
   }
 
   private startMic() {
-    if (!this.inputCtx || !this.stream) return;
-    this.source = this.inputCtx.createMediaStreamSource(this.stream);
-    this.processor = this.inputCtx.createScriptProcessor(4096, 1, 1);
+    if (!this.ctx || !this.stream) return;
+    const rate = this.ctx.sampleRate;
+    this.source = this.ctx.createMediaStreamSource(this.stream);
+    this.processor = this.ctx.createScriptProcessor(4096, 1, 1);
     this.processor.onaudioprocess = (e) => {
-      if (this.muted || !this.session) return;
+      if (this.muted || !this.session || this.stopped) return;
       const input = e.inputBuffer.getChannelData(0);
-      const pcm = floatTo16BitPCM(input);
+      const pcm = downsampleTo16kPCM(input, rate);
       this.session.sendRealtimeInput({
         audio: { data: base64FromBytes(pcm), mimeType: "audio/pcm;rate=16000" },
       });
     };
+    // Mikrofonu hoparlöre geri vermemek için sıfır kazançlı çıkışa bağla.
+    this.sink = this.ctx.createGain();
+    this.sink.gain.value = 0;
     this.source.connect(this.processor);
-    this.processor.connect(this.inputCtx.destination);
+    this.processor.connect(this.sink);
+    this.sink.connect(this.ctx.destination);
   }
 
   private onMessage(m: LiveServerMessage) {
@@ -141,19 +166,20 @@ export class GeminiLiveCall {
   }
 
   private play(b64: string) {
-    if (!this.outputCtx) return;
+    if (!this.ctx) return;
     const bytes = bytesFromBase64(b64);
     const pcm = new Int16Array(bytes.buffer, bytes.byteOffset, Math.floor(bytes.byteLength / 2));
     const float = new Float32Array(pcm.length);
     for (let i = 0; i < pcm.length; i++) float[i] = pcm[i] / 32768;
 
-    const buffer = this.outputCtx.createBuffer(1, float.length, 24000);
+    // 24 kHz buffer; context farklı bir orandaysa tarayıcı oynatırken yeniden örnekler.
+    const buffer = this.ctx.createBuffer(1, float.length, 24000);
     buffer.copyToChannel(float, 0);
-    const src = this.outputCtx.createBufferSource();
+    const src = this.ctx.createBufferSource();
     src.buffer = buffer;
-    src.connect(this.outputCtx.destination);
+    src.connect(this.ctx.destination);
 
-    const now = this.outputCtx.currentTime;
+    const now = this.ctx.currentTime;
     const start = Math.max(now, this.nextStart);
     src.start(start);
     this.nextStart = start + buffer.duration;
@@ -181,6 +207,7 @@ export class GeminiLiveCall {
     this.muted = m;
   }
 
+  // Sadece kendi düğümlerini bırakır; stream ve ctx sahibi (bileşen) yönetir.
   stop() {
     this.stopped = true;
     this.stopPlayback();
@@ -194,19 +221,13 @@ export class GeminiLiveCall {
     } catch {
       /* yoksay */
     }
-    this.stream?.getTracks().forEach((t) => t.stop());
+    try {
+      this.sink?.disconnect();
+    } catch {
+      /* yoksay */
+    }
     try {
       this.session?.close();
-    } catch {
-      /* yoksay */
-    }
-    try {
-      this.inputCtx?.close();
-    } catch {
-      /* yoksay */
-    }
-    try {
-      this.outputCtx?.close();
     } catch {
       /* yoksay */
     }
