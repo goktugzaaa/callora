@@ -7,6 +7,34 @@ type AgentData = {
   services: { name: string; durationMin: number; priceTry: number | null }[];
 };
 
+// Tanıtım sitesindeki sesli demo için sabit persona.
+// Veritabanına bağımlı DEĞİL — böylece Vercel'de (DB olmadan) yalnız API anahtarıyla çalışır.
+export function demoAgentInstructions(): string {
+  return buildAgentInstructions({
+    businessName: "Nova Diş Kliniği",
+    sector: "diş kliniği",
+    greeting:
+      "Nova Diş Kliniği'ni aradığınız için teşekkürler. Ben kliniğin dijital asistanıyım. Randevu almak ya da bilgi almak için size nasıl yardımcı olabilirim?",
+    extraNotes:
+      "Fiyat sorulursa net rakam verme, muayene sonrası hekimimiz bilgi verir de. Acil durumlarda hastayı en yakın acile yönlendir. Kısa, doğal ve sıcak konuş.",
+    workingHours: JSON.stringify({
+      pzt: ["09:00", "18:00"],
+      sal: ["09:00", "18:00"],
+      car: ["09:00", "18:00"],
+      per: ["09:00", "18:00"],
+      cum: ["09:00", "18:00"],
+      cmt: ["10:00", "16:00"],
+      paz: null,
+    }),
+    services: [
+      { name: "Muayene", durationMin: 30, priceTry: 800 },
+      { name: "Diş Temizliği", durationMin: 30, priceTry: 1500 },
+      { name: "Dolgu", durationMin: 45, priceTry: 2200 },
+      { name: "İmplant Konsültasyonu", durationMin: 30, priceTry: null },
+    ],
+  });
+}
+
 const DAY_LABELS: Record<string, string> = {
   pzt: "Pazartesi",
   sal: "Salı",

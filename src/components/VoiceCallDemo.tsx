@@ -48,6 +48,7 @@ export default function VoiceCallDemo() {
   const barRefs = useRef<(HTMLSpanElement | null)[]>([]);
   const rafRef = useRef<number>(0);
   const geminiRef = useRef<GeminiLiveCall | null>(null);
+  const startedRef = useRef(false); // aynı anda ikinci çağrının başlamasını engeller
 
   useEffect(() => {
     if (typeof window !== "undefined") window.speechSynthesis?.getVoices();
@@ -123,11 +124,9 @@ export default function VoiceCallDemo() {
   }
 
   async function runSimCall() {
-    cancelledRef.current = false; // canlı sağlayıcıdan fallback geldiyse iptal bayrağını sıfırla
+    // Zil sesi ve "ringing" fazı startCall'da başladı; burada sadece sürdür.
     setMode("sim");
-    setPhase("ringing");
-    startRingTone();
-    await new Promise((r) => setTimeout(r, 3400));
+    await new Promise((r) => setTimeout(r, 2600));
     if (cancelledRef.current) return;
     stopRingTone();
     setPhase("incall");
@@ -163,8 +162,6 @@ export default function VoiceCallDemo() {
 
   async function runLiveCall(clientSecret: string) {
     setMode("live");
-    setPhase("ringing");
-    startRingTone();
     try {
       const mic = await navigator.mediaDevices.getUserMedia({ audio: true });
       micRef.current = mic;
@@ -207,8 +204,11 @@ export default function VoiceCallDemo() {
       if (!res.ok) throw new Error("baglanti kurulamadi");
       await pc.setRemoteDescription({ type: "answer", sdp: await res.text() });
     } catch {
-      hangUp();
-      runSimCall();
+      pcRef.current?.close();
+      pcRef.current = null;
+      micRef.current?.getTracks().forEach((t) => t.stop());
+      micRef.current = null;
+      if (!cancelledRef.current) runSimCall();
     }
   }
 
@@ -219,11 +219,18 @@ export default function VoiceCallDemo() {
     instructions: string;
   }) {
     setMode("gemini");
-    setPhase("ringing");
-    startRingTone();
+    let opened = false;
+    const fallback = () => {
+      geminiRef.current?.stop();
+      geminiRef.current = null;
+      if (cancelledRef.current) return;
+      if (opened) endCall();
+      else runSimCall();
+    };
     const call = new GeminiLiveCall(cfg.token, cfg.model, cfg.instructions, cfg.voice, {
       onOpen: () => {
         if (cancelledRef.current) return;
+        opened = true;
         stopRingTone();
         setPhase("incall");
         startTimer();
@@ -233,28 +240,29 @@ export default function VoiceCallDemo() {
       onClose: () => {
         if (!cancelledRef.current) endCall();
       },
-      onError: () => {
-        hangUp();
-        runSimCall();
-      },
+      onError: fallback,
     });
     geminiRef.current = call;
     try {
       await call.start();
     } catch {
-      hangUp();
-      runSimCall();
+      fallback();
     }
   }
 
   async function startCall() {
+    if (startedRef.current) return; // çift tık koruması
+    startedRef.current = true;
     cancelledRef.current = false;
     setCaption(null);
+    setPhase("ringing"); // butonu hemen gizle, ikinci tıklamayı önle
     getCtx().resume();
+    startRingTone();
 
     // 1. Gemini Live (ücretsiz kotayla test için)
     try {
       const g = await fetch("/api/gemini/session", { method: "POST" }).then((r) => r.json());
+      if (cancelledRef.current) return;
       if (g.mode === "gemini" && g.token) {
         runGeminiCall(g);
         return;
@@ -266,6 +274,7 @@ export default function VoiceCallDemo() {
     // 2. OpenAI Realtime
     try {
       const s = await fetch("/api/realtime/session", { method: "POST" }).then((r) => r.json());
+      if (cancelledRef.current) return;
       if (s.mode === "live" && s.clientSecret) {
         runLiveCall(s.clientSecret);
         return;
@@ -275,7 +284,7 @@ export default function VoiceCallDemo() {
     }
 
     // 3. Anahtar yoksa: tarayıcı sesiyle örnek görüşme
-    runSimCall();
+    if (!cancelledRef.current) runSimCall();
   }
 
   function endCall() {
@@ -297,6 +306,7 @@ export default function VoiceCallDemo() {
   }
 
   function cleanup() {
+    startedRef.current = false; // yeni çağrıya izin ver
     stopRingTone();
     window.speechSynthesis?.cancel();
     if (timerRef.current) clearInterval(timerRef.current);
