@@ -1,0 +1,13 @@
+{
+  "name": "callora-bridge",
+  "version": "1.0.0",
+  "description": "Twilio Media Streams <-> OpenAI Realtime ses köprüsü",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "ws": "^8.18.0"
+  }
+}

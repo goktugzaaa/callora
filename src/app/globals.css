@@ -1,26 +1,214 @@
 @import "tailwindcss";
 
+/*
+  Callora tasarım sistemi v2 (ElevenLabs yönü)
+  Tema: tek açık tema. Beyaz zemin, near-black tipografi, hairline çizgiler.
+  Accent: emerald yalnızca "ses/çağrı" anlarında (orb, ara tuşu, canlı durumlar).
+  Köşe kuralı: butonlar tam pill, kartlar 16px, inputlar 10px.
+*/
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fafafa;
+  --foreground: #18181b;
+  --surface: #ffffff;
+  --surface-2: #f4f4f5;
+  --border: #e4e4e7;
+  --muted: #52525b;
+  --muted-2: #a1a1aa;
+  --accent: #10b981;
+  --accent-strong: #059669;
+  --ink: #111113;
+  --danger: #ef4444;
+  --warning: #d97706;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-line: var(--border);
+  --color-muted: var(--muted);
+  --color-muted-2: var(--muted-2);
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+  --color-ink: var(--ink);
+  --color-success: var(--accent);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: #18181b;
+  color: #fafafa;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  padding: 0.7rem 1.5rem;
+  font-weight: 500;
+  font-size: 0.9375rem;
+  color: #fafafa;
+  background: var(--ink);
+  white-space: nowrap;
+  transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), background 0.15s;
+}
+.btn-primary:hover {
+  background: #27272a;
+  transform: translateY(-1px);
+}
+.btn-primary:active {
+  transform: scale(0.98);
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  padding: 0.7rem 1.5rem;
+  font-weight: 500;
+  font-size: 0.9375rem;
+  color: var(--foreground);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  white-space: nowrap;
+  transition: border-color 0.15s, transform 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.btn-ghost:hover {
+  border-color: var(--muted-2);
+  transform: translateY(-1px);
+}
+.btn-ghost:active {
+  transform: scale(0.98);
+}
+
+.input {
+  width: 100%;
+  border-radius: 0.625rem;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  padding: 0.65rem 0.9rem;
+  color: var(--foreground);
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.input:focus {
+  border-color: var(--foreground);
+  box-shadow: 0 0 0 3px rgba(24, 24, 27, 0.08);
+}
+.input::placeholder {
+  color: var(--muted-2);
+}
+
+/* Ses orb'u: dönen gradient küre */
+@property --orb-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+@keyframes orb-spin {
+  to { --orb-angle: 360deg; }
+}
+@keyframes orb-breathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.06); }
+}
+.voice-orb {
+  border-radius: 9999px;
+  background:
+    radial-gradient(circle at 32% 30%, rgba(255, 255, 255, 0.85), transparent 42%),
+    conic-gradient(
+      from var(--orb-angle),
+      #34d399,
+      #2dd4bf,
+      #38bdf8,
+      #6ee7b7,
+      #34d399
+    );
+  animation: orb-spin 7s linear infinite, orb-breathe 5s ease-in-out infinite;
+  transition: filter 0.4s, opacity 0.4s;
+}
+.voice-orb.orb-idle {
+  filter: saturate(0.25) brightness(1.05);
+  opacity: 0.75;
+}
+.voice-orb.orb-speaking {
+  animation: orb-spin 2.6s linear infinite, orb-breathe 1.1s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .voice-orb { animation: none; }
+}
+
+/* Arama demosu: konuşma dalga çubukları */
+@keyframes wave {
+  0%, 100% { transform: scaleY(0.3); }
+  50% { transform: scaleY(1); }
+}
+.wave-bar {
+  transform-origin: center;
+  animation: wave 0.9s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .wave-bar { animation: none; transform: scaleY(0.5); }
+}
+
+/* Çalıyor halkası */
+@keyframes ring-pulse {
+  0% { transform: scale(1); opacity: 0.45; }
+  100% { transform: scale(1.5); opacity: 0; }
+}
+.ring-pulse {
+  animation: ring-pulse 1.4s ease-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .ring-pulse { animation: none; opacity: 0; }
+}
+
+/* Sektör şeridi */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.marquee-track {
+  animation: marquee 32s linear infinite;
+}
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
+}
+
+/* Kart hover kalkışı */
+.lift {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s;
+}
+.lift:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px -16px rgba(24, 24, 27, 0.18);
+}
+@media (prefers-reduced-motion: reduce) {
+  .lift, .lift:hover { transform: none; box-shadow: none; }
 }

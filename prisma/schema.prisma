@@ -1,0 +1,86 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String    @id @default(cuid())
+  email        String    @unique
+  passwordHash String
+  name         String
+  createdAt    DateTime  @default(now())
+  business     Business?
+}
+
+model Business {
+  id           String        @id @default(cuid())
+  name         String
+  phone        String?
+  sector       String        @default("klinik")
+  timezone     String        @default("Europe/Istanbul")
+  plan         String        @default("deneme")
+  ownerId      String        @unique
+  owner        User          @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  agent        AgentConfig?
+  services     Service[]
+  appointments Appointment[]
+  calls        Call[]
+  createdAt    DateTime      @default(now())
+}
+
+model AgentConfig {
+  id           String   @id @default(cuid())
+  businessId   String   @unique
+  business     Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  greeting     String   @default("Merhaba, aradığınız için teşekkürler. Ben dijital asistanınızım. Size nasıl yardımcı olabilirim?")
+  voice        String   @default("coral")
+  language     String   @default("tr")
+  extraNotes   String   @default("")
+  workingHours String   @default("{\"pzt\":[\"09:00\",\"18:00\"],\"sal\":[\"09:00\",\"18:00\"],\"car\":[\"09:00\",\"18:00\"],\"per\":[\"09:00\",\"18:00\"],\"cum\":[\"09:00\",\"18:00\"],\"cmt\":[\"10:00\",\"16:00\"],\"paz\":null}")
+  updatedAt    DateTime @updatedAt
+}
+
+model Service {
+  id           String        @id @default(cuid())
+  businessId   String
+  business     Business      @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  name         String
+  durationMin  Int           @default(30)
+  priceTry     Int?
+  appointments Appointment[]
+}
+
+model Appointment {
+  id            String   @id @default(cuid())
+  businessId    String
+  business      Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  serviceId     String?
+  service       Service? @relation(fields: [serviceId], references: [id])
+  customerName  String
+  customerPhone String
+  startsAt      DateTime
+  endsAt        DateTime
+  status        String   @default("onaylandi")
+  source        String   @default("telefon")
+  notes         String   @default("")
+  createdAt     DateTime @default(now())
+  call          Call?
+}
+
+model Call {
+  id            String       @id @default(cuid())
+  businessId    String
+  business      Business     @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  twilioSid     String?
+  fromNumber    String       @default("")
+  startedAt     DateTime     @default(now())
+  durationSec   Int          @default(0)
+  transcript    String       @default("[]")
+  outcome       String       @default("bilgi")
+  appointmentId String?      @unique
+  appointment   Appointment? @relation(fields: [appointmentId], references: [id])
+}

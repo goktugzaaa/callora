@@ -39,3 +39,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local sqlite db (migrate + seed ile yeniden üretilir)
+/prisma/dev.db
+/prisma/dev.db-journal
+
+# env şablonu commit'lensin, gerçek .env asla
+!.env.example
