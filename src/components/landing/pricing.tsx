@@ -3,7 +3,6 @@ import { getTranslations } from "next-intl/server";
 import { cn } from "cn";
 import { Reveal } from "@/components/motion/reveal";
 import { buttonVariants } from "@/components/ui/button";
-import { Link } from "@/i18n/navigation";
 
 const PLANS = [
   { key: "starter", price: "$39", featured: false },
@@ -19,7 +18,7 @@ export async function Pricing() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <Reveal className="max-w-2xl">
           <h2 className="text-balance text-3xl font-semibold tracking-tight sm:text-4xl">{t("pricing.title")}</h2>
-          <p className="mt-4 text-lg text-muted-foreground">{t("cta.body")}</p>
+          <p className="mt-4 text-lg text-muted-foreground">{t("pricing.subtitle")}</p>
         </Reveal>
 
         <div className="mt-12 grid items-stretch gap-4 lg:grid-cols-[1fr_1.2fr_1fr]">
@@ -59,18 +58,12 @@ export async function Pricing() {
                     ))}
                   </ul>
                   <div className="mt-auto pt-8">
-                    {plan.price ? (
-                      <Link
-                        href="/signup"
-                        className={buttonVariants({ size: "lg", variant: plan.featured ? "default" : "outline", className: "w-full" })}
-                      >
-                        {t("common.startTrial")}
-                      </Link>
-                    ) : (
-                      <a href="mailto:hello@callora.app" className={buttonVariants({ size: "lg", variant: "outline", className: "w-full" })}>
-                        {t("pricing.contact")}
-                      </a>
-                    )}
+                    <a
+                      href="#demo"
+                      className={buttonVariants({ size: "lg", variant: plan.featured ? "default" : "outline", className: "w-full" })}
+                    >
+                      {t("common.tryDemo")}
+                    </a>
                   </div>
                 </article>
               </Reveal>

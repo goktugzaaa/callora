@@ -7,7 +7,6 @@ import { Logo } from "@/components/brand/logo";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { directionOf, type Locale } from "@/i18n/locales";
-import { Link } from "@/i18n/navigation";
 import { LocaleSwitcher } from "./locale-switcher";
 import { ThemeToggle } from "./theme-toggle";
 
@@ -48,12 +47,9 @@ export function MobileNav({ links }: { links: { href: string; label: string }[] 
             <LocaleSwitcher />
             <ThemeToggle />
           </div>
-          <Link href="/login" className={buttonVariants({ variant: "outline", size: "lg" })}>
-            {t("common.login")}
-          </Link>
-          <Link href="/signup" className={buttonVariants({ size: "lg" })}>
-            {t("common.startTrial")}
-          </Link>
+          <a href="#demo" onClick={() => setOpen(false)} className={buttonVariants({ size: "lg" })}>
+            {t("common.tryDemo")}
+          </a>
         </div>
       </SheetContent>
     </Sheet>

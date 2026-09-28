@@ -36,13 +36,10 @@ export async function SiteHeader() {
           <div className="hidden items-center gap-1 md:flex">
             <LocaleSwitcher />
             <ThemeToggle />
-            <Link href="/login" className={buttonVariants({ variant: "ghost", size: "sm" })}>
-              {t("common.login")}
-            </Link>
           </div>
-          <Link href="/signup" className={buttonVariants({ size: "sm", className: "ms-1" })}>
-            {t("common.startTrial")}
-          </Link>
+          <a href="#demo" className={buttonVariants({ size: "sm", className: "ms-1" })}>
+            {t("common.tryDemo")}
+          </a>
           <MobileNav links={links} />
         </div>
       </div>

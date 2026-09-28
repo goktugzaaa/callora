@@ -27,7 +27,8 @@
     "retry": "Tekrar dene",
     "loading": "Yükleniyor…",
     "optional": "İsteğe bağlı",
-    "errorGeneric": "Bir sorun oluştu. Lütfen tekrar deneyin."
+    "errorGeneric": "Bir sorun oluştu. Lütfen tekrar deneyin.",
+    "tryDemo": "Canlı demoyu dene"
   },
   "nav": {
     "product": "Ürün",
@@ -162,7 +163,8 @@
         "Özel asistan talimatları",
         "Size özel kurulum"
       ]
-    }
+    },
+    "subtitle": "Lansman fiyatları. Tüm paketler Arapça ve İngilizce konuşur."
   },
   "faq": {
     "title": "Sık sorulan sorular",
@@ -199,7 +201,7 @@
   },
   "cta": {
     "title": "Resepsiyonunuza Callora'yı koyun.",
-    "body": "14 gün ücretsiz. Kredi kartı gerekmez.",
+    "body": "İngilizce ya da Arapça randevu oluşturmasını izleyin.",
     "counterpart": "خلّي Callora على استقبالك."
   },
   "footer": {

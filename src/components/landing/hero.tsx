@@ -2,7 +2,6 @@ import { ArrowRightIcon, WhatsappLogoIcon } from "@phosphor-icons/react/dist/ssr
 import { getLocale, getTranslations } from "next-intl/server";
 import { LiveDemo } from "@/components/demo/live-demo";
 import { buttonVariants } from "@/components/ui/button";
-import { Link } from "@/i18n/navigation";
 
 export async function Hero() {
   const t = await getTranslations();
@@ -38,17 +37,20 @@ export async function Hero() {
           </p>
 
           <div className="mt-9 flex flex-wrap items-center gap-3">
-            <Link href="/signup" className={buttonVariants({ size: "lg" })}>
-              {t("common.startTrial")}
+            <a href="#demo" className={buttonVariants({ size: "lg" })}>
+              {t("common.tryDemo")}
               <ArrowRightIcon className="size-4 rtl:-scale-x-100" />
-            </Link>
-            <Link href="/login?demo=1" className={buttonVariants({ size: "lg", variant: "outline", className: "border-foreground/15" })}>
-              {t("common.exploreDashboard")}
-            </Link>
+            </a>
+            <a href="#how" className={buttonVariants({ size: "lg", variant: "outline", className: "border-foreground/15" })}>
+              {t("nav.how")}
+            </a>
           </div>
         </div>
 
-        <div className="motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-bottom-6 motion-safe:fill-mode-both motion-safe:delay-150 motion-safe:duration-700">
+        <div
+          id="demo"
+          className="scroll-mt-24 motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-bottom-6 motion-safe:fill-mode-both motion-safe:delay-150 motion-safe:duration-700"
+        >
           <LiveDemo />
         </div>
       </div>

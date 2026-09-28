@@ -1,6 +1,5 @@
 import { getTranslations } from "next-intl/server";
 import { Logo } from "@/components/brand/logo";
-import { Link } from "@/i18n/navigation";
 
 export async function SiteFooter() {
   const t = await getTranslations();
@@ -16,7 +15,6 @@ export async function SiteFooter() {
             <a href="#product" className="hover:text-foreground">{t("nav.product")}</a>
             <a href="#pricing" className="hover:text-foreground">{t("nav.pricing")}</a>
             <a href="#faq" className="hover:text-foreground">{t("nav.faq")}</a>
-            <Link href="/login" className="hover:text-foreground">{t("common.login")}</Link>
           </nav>
           <p>{t("footer.rights", { year: new Date().getFullYear() })}</p>
         </div>

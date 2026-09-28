@@ -27,7 +27,8 @@
     "retry": "Try again",
     "loading": "Loading…",
     "optional": "Optional",
-    "errorGeneric": "Something went wrong. Please try again."
+    "errorGeneric": "Something went wrong. Please try again.",
+    "tryDemo": "Try the live demo"
   },
   "nav": {
     "product": "Product",
@@ -162,7 +163,8 @@
         "Custom AI instructions",
         "Dedicated onboarding"
       ]
-    }
+    },
+    "subtitle": "Launch pricing. Every plan speaks Arabic and English."
   },
   "faq": {
     "title": "Questions, answered",
@@ -199,7 +201,7 @@
   },
   "cta": {
     "title": "Put Callora on your front desk.",
-    "body": "Free for 14 days. No credit card required.",
+    "body": "Watch it book an appointment in English or Arabic.",
     "counterpart": "خلّي Callora على استقبالك."
   },
   "footer": {
