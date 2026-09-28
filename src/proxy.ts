@@ -1,39 +1,16 @@
-import { NextRequest, NextResponse } from "next/server";
-import { jwtVerify } from "jose";
+import createMiddleware from "next-intl/middleware";
+import type { NextRequest } from "next/server";
+import { routing } from "@/i18n/routing";
+import { updateSession } from "@/lib/supabase/proxy";
 
-const secret = new TextEncoder().encode(
-  process.env.AUTH_SECRET ?? "dev-secret-change-in-production"
-);
+const handleI18nRouting = createMiddleware(routing);
 
-export async function proxy(req: NextRequest) {
-  const token = req.cookies.get("callora_session")?.value;
-  let authed = false;
-  if (token) {
-    try {
-      await jwtVerify(token, secret);
-      authed = true;
-    } catch {
-      authed = false;
-    }
-  }
-
-  const { pathname } = req.nextUrl;
-
-  if (pathname.startsWith("/panel") && !authed) {
-    const url = req.nextUrl.clone();
-    url.pathname = "/giris";
-    return NextResponse.redirect(url);
-  }
-
-  if ((pathname === "/giris" || pathname === "/kayit") && authed) {
-    const url = req.nextUrl.clone();
-    url.pathname = "/panel";
-    return NextResponse.redirect(url);
-  }
-
-  return NextResponse.next();
+export default async function proxy(request: NextRequest) {
+  const response = handleI18nRouting(request);
+  return updateSession(request, response);
 }
 
 export const config = {
-  matcher: ["/panel/:path*", "/giris", "/kayit"],
+  // Pages only: skip API routes, the auth callback, Next internals and static files.
+  matcher: ["/((?!api|auth|_next|_vercel|.*\\..*).*)"],
 };

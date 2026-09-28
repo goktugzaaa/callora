@@ -1,0 +1,251 @@
+{
+  "meta": {
+    "title": "Callora · AI receptionist for WhatsApp",
+    "description": "Callora answers your customers on WhatsApp in Arabic and English, books real appointments and hands tricky chats to your team."
+  },
+  "common": {
+    "brand": "Callora",
+    "startTrial": "Start free trial",
+    "exploreDashboard": "Explore the dashboard",
+    "login": "Log in",
+    "logout": "Log out",
+    "language": "Language",
+    "theme": "Theme",
+    "themeLight": "Light",
+    "themeDark": "Dark",
+    "themeSystem": "System",
+    "skipToContent": "Skip to content",
+    "save": "Save",
+    "saving": "Saving…",
+    "saved": "Saved",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "add": "Add",
+    "close": "Close",
+    "back": "Back",
+    "retry": "Try again",
+    "loading": "Loading…",
+    "optional": "Optional",
+    "errorGeneric": "Something went wrong. Please try again."
+  },
+  "nav": {
+    "product": "Product",
+    "how": "How it works",
+    "pricing": "Pricing",
+    "faq": "FAQ",
+    "openMenu": "Open menu"
+  },
+  "hero": {
+    "eyebrow": "WhatsApp AI receptionist for salons and clinics",
+    "titleA": "Every chat answered.",
+    "titleB": "Every slot booked.",
+    "subtitle": "Callora answers customers in Arabic and English, books real appointments, and hands tricky chats to your team.",
+    "counterpart": "كل محادثة لها رد، وكل موعد يُحجز."
+  },
+  "simulator": {
+    "label": "Live demo",
+    "pickBusiness": "Choose a demo business",
+    "online": "online",
+    "typing": "typing…",
+    "placeholder": "Message",
+    "send": "Send",
+    "reset": "New chat",
+    "welcome": "Live demo. Ask about prices or book a real slot. Chats are public and reset daily, so please don't share personal data.",
+    "tryAsking": "Try asking",
+    "handover": "Handed to the team. In the product, staff see this chat flagged in their inbox and reply from there.",
+    "rateLimited": "You've sent a lot of messages. Please wait a few minutes and try again.",
+    "unavailable": "The demo backend is not reachable right now.",
+    "actionsTitle": "What Callora did",
+    "actionsEmpty": "Backend actions appear here as the assistant looks things up and books.",
+    "actionsFootnote": "Every fact comes from these calls. Nothing is invented.",
+    "today": "Today",
+    "yourTurn": "That was a replay. Now it's live: ask anything or book a slot."
+  },
+  "actions": {
+    "getBusinessInfo": "Read business info",
+    "getServices": "Loaded service menu",
+    "checkAvailability": "Checked availability",
+    "createBooking": "Created booking",
+    "getMyAppointments": "Looked up bookings",
+    "rescheduleBooking": "Moved booking",
+    "cancelBooking": "Cancelled booking",
+    "createLead": "Saved lead",
+    "requestHumanHandover": "Handed to a human",
+    "failed": "failed",
+    "times": "{count, plural, one {# time} other {# times}} free",
+    "noTimes": "no free times",
+    "services": "{count, plural, one {# service} other {# services}}",
+    "reference": "ref {reference}"
+  },
+  "grounded": {
+    "title": "Answers come from your data, never from guesswork.",
+    "body": "Prices, free slots and policies are looked up live. A booking is only confirmed after your database accepts it.",
+    "customer": "Customer",
+    "assistant": "Callora",
+    "database": "Your data",
+    "stepAsk": "Is there time for balayage on Thursday evening?",
+    "stepReply": "Thursday at 5:00 PM with Omar is free. Shall I book it?",
+    "stepConfirm": "Booked for Thursday, 5:00 PM. Your reference is 7F3A91C2.",
+    "guard": "Two bookings can never overlap for the same person. The database rejects it, so the assistant can't promise a taken slot.",
+    "stepYes": "Yes please"
+  },
+  "features": {
+    "title": "Everything a great front desk does",
+    "takeover": {
+      "title": "Step in with one tap",
+      "body": "Complaints, special requests and anything unclear land in your inbox, flagged. Take over, reply, hand it back.",
+      "flag": "Needs attention",
+      "button": "Take over",
+      "ai": "AI",
+      "you": "You",
+      "c1": "Bride + 6 bridesmaids, need a package price",
+      "c2": "Booked: blow-dry tomorrow 18:30",
+      "c3": "Is there parking near you?",
+      "reply": "Write a reply"
+    },
+    "security": {
+      "title": "Your number, your data",
+      "body": "Each business connects its own WhatsApp number. Row-level security keeps every business sealed off."
+    },
+    "analytics": {
+      "title": "See what it brings in",
+      "body": "Bookings, handovers and after-hours demand at a glance.",
+      "sample": "Sample data"
+    },
+    "rules": {
+      "title": "Your rules, not the model's",
+      "body": "Split shifts, buffers, notice periods and who does which service.",
+      "r1": "Friday 14:00-20:00",
+      "r2": "10 minutes between clients",
+      "r3": "Cancel up to 4 hours before",
+      "r4": "Omar does colour only"
+    },
+    "menu": {
+      "title": "Your menu, in both languages",
+      "body": "Services, prices and durations the assistant quotes word for word."
+    }
+  },
+  "pricing": {
+    "title": "Simple plans that grow with you",
+    "monthly": "/ month",
+    "popular": "Most popular",
+    "custom": "Custom",
+    "contact": "Talk to sales",
+    "starter": {
+      "name": "Starter",
+      "desc": "For a single location getting started.",
+      "features": [
+        "1 WhatsApp number",
+        "Up to 3 staff calendars",
+        "1,000 AI conversations / month",
+        "Arabic and English"
+      ]
+    },
+    "growth": {
+      "name": "Growth",
+      "desc": "For busy salons and clinics.",
+      "features": [
+        "Everything in Starter",
+        "Up to 10 staff calendars",
+        "5,000 AI conversations / month",
+        "Analytics and lead follow-up",
+        "Priority support"
+      ]
+    },
+    "scale": {
+      "name": "Scale",
+      "desc": "For chains and multiple branches.",
+      "features": [
+        "Multiple numbers and branches",
+        "Unlimited staff",
+        "Custom AI instructions",
+        "Dedicated onboarding"
+      ]
+    }
+  },
+  "faq": {
+    "title": "Questions, answered",
+    "items": [
+      {
+        "q": "Does it use my own WhatsApp number?",
+        "a": "Yes. Each business connects its own WhatsApp Business number through Meta's official WhatsApp Business Platform. Customers keep chatting with the number they already know."
+      },
+      {
+        "q": "What happens when the assistant doesn't know something?",
+        "a": "It never guesses. It tells the customer a team member will reply, flags the chat in your inbox and stops auto-replying until you hand it back."
+      },
+      {
+        "q": "Can customers pick a specific staff member?",
+        "a": "Yes. The assistant only offers times when that person is working, free, and qualified for the service."
+      },
+      {
+        "q": "Is my customers' data safe?",
+        "a": "Every business's data is isolated at the database level with row-level security. WhatsApp access tokens are encrypted, and you can export your data at any time."
+      },
+      {
+        "q": "Which languages does it speak?",
+        "a": "Arabic and English out of the box, including Levantine and Gulf phrasing, plus Turkish. It always answers in the customer's language."
+      },
+      {
+        "q": "Can I control what it says?",
+        "a": "Choose a tone, write a greeting and add your own instructions and FAQs. Prices, services and policies always come from what you set."
+      },
+      {
+        "q": "How long does setup take?",
+        "a": "Most businesses are live the same day: connect your WhatsApp number, add services, staff and hours, and choose a tone."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Put Callora on your front desk.",
+    "body": "Free for 14 days. No credit card required.",
+    "counterpart": "خلّي Callora على استقبالك."
+  },
+  "footer": {
+    "rights": "© {year} Callora. All rights reserved.",
+    "builtWith": "Built on the WhatsApp Business Platform, Supabase and Vercel."
+  },
+  "auth": {
+    "loginTitle": "Welcome back",
+    "loginSubtitle": "Log in to manage your front desk.",
+    "signupTitle": "Create your account",
+    "signupSubtitle": "Set up your AI receptionist in minutes.",
+    "email": "Email",
+    "password": "Password",
+    "passwordHint": "At least 8 characters.",
+    "fullName": "Your name",
+    "loginButton": "Log in",
+    "signupButton": "Create account",
+    "demoButton": "Explore with demo data",
+    "noAccount": "New to Callora?",
+    "haveAccount": "Already have an account?",
+    "or": "or",
+    "invalidCredentials": "Email or password is incorrect.",
+    "emailTaken": "An account with this email already exists.",
+    "checkEmail": "Check your inbox to confirm your email, then log in.",
+    "weakPassword": "Use at least 8 characters.",
+    "notConfigured": "Accounts are not available until the database is connected.",
+    "demoUnavailable": "The demo account is not available right now."
+  },
+  "dialects": {
+    "title": "Speaks the way your customers write",
+    "body": "Levantine, Gulf, Arabizi, English or Turkish. Callora understands it and replies in kind, in the tone you choose.",
+    "levantine": "Levantine Arabic",
+    "gulf": "Gulf Arabic",
+    "arabizi": "Arabizi",
+    "english": "English",
+    "turkish": "Turkish"
+  },
+  "afterHours": {
+    "title": "Open when you're closed",
+    "body": "Customers message whenever it suits them. Callora answers in seconds, day or night, and your calendar fills while the salon is closed.",
+    "hours": "Opening hours",
+    "outside": "Outside opening hours",
+    "e1": "Booked a keratin treatment for Saturday",
+    "e2": "Answered a question about parking",
+    "e3": "Moved a manicure to Monday",
+    "e4": "Booked a facial for tomorrow at 11:00",
+    "e5": "Flagged a complaint for the team"
+  }
+}

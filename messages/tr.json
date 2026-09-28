@@ -1,0 +1,251 @@
+{
+  "meta": {
+    "title": "Callora · WhatsApp için yapay zekâ resepsiyonist",
+    "description": "Callora, müşterilerinizi WhatsApp'ta Arapça, İngilizce ve Türkçe karşılar, gerçek randevular oluşturur ve hassas konuşmaları ekibinize devreder."
+  },
+  "common": {
+    "brand": "Callora",
+    "startTrial": "Ücretsiz dene",
+    "exploreDashboard": "Paneli keşfet",
+    "login": "Giriş yap",
+    "logout": "Çıkış yap",
+    "language": "Dil",
+    "theme": "Tema",
+    "themeLight": "Açık",
+    "themeDark": "Koyu",
+    "themeSystem": "Sistem",
+    "skipToContent": "İçeriğe geç",
+    "save": "Kaydet",
+    "saving": "Kaydediliyor…",
+    "saved": "Kaydedildi",
+    "cancel": "Vazgeç",
+    "delete": "Sil",
+    "edit": "Düzenle",
+    "add": "Ekle",
+    "close": "Kapat",
+    "back": "Geri",
+    "retry": "Tekrar dene",
+    "loading": "Yükleniyor…",
+    "optional": "İsteğe bağlı",
+    "errorGeneric": "Bir sorun oluştu. Lütfen tekrar deneyin."
+  },
+  "nav": {
+    "product": "Ürün",
+    "how": "Nasıl çalışır",
+    "pricing": "Fiyatlar",
+    "faq": "SSS",
+    "openMenu": "Menüyü aç"
+  },
+  "hero": {
+    "eyebrow": "Kuaför ve klinikler için WhatsApp yapay zekâ resepsiyonisti",
+    "titleA": "Her mesaj yanıtlanır.",
+    "titleB": "Her boşluk dolar.",
+    "subtitle": "Callora müşterilerinize kendi dillerinde yanıt verir, gerçek randevular oluşturur ve zor konuşmaları ekibinize devreder.",
+    "counterpart": "كل محادثة لها رد، وكل موعد يُحجز."
+  },
+  "simulator": {
+    "label": "Canlı demo",
+    "pickBusiness": "Bir demo işletme seçin",
+    "online": "çevrimiçi",
+    "typing": "yazıyor…",
+    "placeholder": "Mesaj",
+    "send": "Gönder",
+    "reset": "Yeni sohbet",
+    "welcome": "Canlı demo. Fiyatları sorun ya da gerçek bir randevu alın. Sohbetler herkese açıktır ve her gün silinir; kişisel bilgi paylaşmayın.",
+    "tryAsking": "Şunları sorabilirsiniz",
+    "handover": "Ekibe devredildi. Üründe bu sohbet, personelin gelen kutusunda işaretli olarak görünür ve oradan yanıtlanır.",
+    "rateLimited": "Çok fazla mesaj gönderdiniz. Lütfen birkaç dakika bekleyip tekrar deneyin.",
+    "unavailable": "Demo sunucusuna şu an ulaşılamıyor.",
+    "actionsTitle": "Callora ne yaptı",
+    "actionsEmpty": "Asistan bilgi arayıp randevu oluşturdukça yaptığı işlemler burada görünür.",
+    "actionsFootnote": "Her bilgi bu çağrılardan gelir. Hiçbir şey uydurulmaz.",
+    "today": "Bugün",
+    "yourTurn": "Bu bir tekrardı. Şimdi canlı: dilediğinizi sorun ya da randevu alın."
+  },
+  "actions": {
+    "getBusinessInfo": "İşletme bilgisini okudu",
+    "getServices": "Hizmet listesini yükledi",
+    "checkAvailability": "Müsaitliğe baktı",
+    "createBooking": "Randevu oluşturdu",
+    "getMyAppointments": "Randevuları sorguladı",
+    "rescheduleBooking": "Randevuyu taşıdı",
+    "cancelBooking": "Randevuyu iptal etti",
+    "createLead": "Potansiyel müşteri kaydetti",
+    "requestHumanHandover": "Ekibe devretti",
+    "failed": "başarısız",
+    "times": "{count} boş saat",
+    "noTimes": "boş saat yok",
+    "services": "{count} hizmet",
+    "reference": "no {reference}"
+  },
+  "grounded": {
+    "title": "Yanıtlar tahminden değil, sizin verinizden gelir.",
+    "body": "Fiyatlar, boş saatler ve kurallar anlık olarak sorgulanır. Randevu, ancak veritabanınız kabul ettiğinde onaylanır.",
+    "customer": "Müşteri",
+    "assistant": "Callora",
+    "database": "Verileriniz",
+    "stepAsk": "Perşembe akşamı balyaj için yer var mı?",
+    "stepReply": "Perşembe 17:00'de Omar müsait. Randevunuzu oluşturayım mı?",
+    "stepConfirm": "Perşembe 17:00 için randevunuz oluşturuldu. Randevu numaranız 7F3A91C2.",
+    "guard": "Aynı kişiye ait iki randevu asla çakışamaz. Veritabanı bunu reddeder, bu yüzden asistan dolu bir saati vaat edemez.",
+    "stepYes": "Evet, lütfen"
+  },
+  "features": {
+    "title": "İyi bir resepsiyonun yaptığı her şey",
+    "takeover": {
+      "title": "Tek dokunuşla devralın",
+      "body": "Şikâyetler, özel talepler ve belirsiz her şey işaretli olarak gelen kutunuza düşer. Devralın, yanıtlayın, geri verin.",
+      "flag": "İlgi bekliyor",
+      "button": "Devral",
+      "ai": "Yapay zekâ",
+      "you": "Siz",
+      "c1": "Gelin + 6 nedime, paket fiyatı lazım",
+      "c2": "Oluşturuldu: yarın 18:30 fön",
+      "c3": "Yakınlarda otopark var mı?",
+      "reply": "Yanıt yazın"
+    },
+    "security": {
+      "title": "Numaranız, verileriniz",
+      "body": "Her işletme kendi WhatsApp numarasını bağlar. Satır düzeyinde güvenlik her işletmeyi ayrı tutar."
+    },
+    "analytics": {
+      "title": "Ne kazandırdığını görün",
+      "body": "Randevular, devirler ve mesai dışı talepler tek bakışta.",
+      "sample": "Örnek veri"
+    },
+    "rules": {
+      "title": "Kurallar sizin, modelin değil",
+      "body": "Bölünmüş vardiyalar, randevu araları, bildirim süreleri ve hangi hizmeti kimin verdiği.",
+      "r1": "Cuma 14:00-20:00",
+      "r2": "Müşteriler arası 10 dakika",
+      "r3": "En geç 4 saat önce iptal",
+      "r4": "Omar yalnızca boya yapar"
+    },
+    "menu": {
+      "title": "Hizmet listeniz, iki dilde",
+      "body": "Asistanın kelimesi kelimesine aktardığı hizmetler, fiyatlar ve süreler."
+    }
+  },
+  "pricing": {
+    "title": "Sizinle büyüyen sade paketler",
+    "monthly": "/ ay",
+    "popular": "En çok tercih edilen",
+    "custom": "Özel",
+    "contact": "Satışla görüşün",
+    "starter": {
+      "name": "Başlangıç",
+      "desc": "Yeni başlayan tek şube için.",
+      "features": [
+        "1 WhatsApp numarası",
+        "3 personel takvimine kadar",
+        "Ayda 1.000 yapay zekâ konuşması",
+        "Arapça, İngilizce ve Türkçe"
+      ]
+    },
+    "growth": {
+      "name": "Büyüme",
+      "desc": "Yoğun kuaför ve klinikler için.",
+      "features": [
+        "Başlangıç'taki her şey",
+        "10 personel takvimine kadar",
+        "Ayda 5.000 yapay zekâ konuşması",
+        "Analiz ve potansiyel müşteri takibi",
+        "Öncelikli destek"
+      ]
+    },
+    "scale": {
+      "name": "Ölçek",
+      "desc": "Zincirler ve çok şubeli işletmeler için.",
+      "features": [
+        "Birden çok numara ve şube",
+        "Sınırsız personel",
+        "Özel asistan talimatları",
+        "Size özel kurulum"
+      ]
+    }
+  },
+  "faq": {
+    "title": "Sık sorulan sorular",
+    "items": [
+      {
+        "q": "Kendi WhatsApp numaramı mı kullanıyor?",
+        "a": "Evet. Her işletme, Meta'nın resmi WhatsApp Business Platformu üzerinden kendi numarasını bağlar. Müşterileriniz zaten bildikleri numarayla yazışmaya devam eder."
+      },
+      {
+        "q": "Asistan bir şeyi bilmediğinde ne olur?",
+        "a": "Asla tahmin yürütmez. Müşteriye ekipten birinin yanıt vereceğini söyler, sohbeti gelen kutunuzda işaretler ve siz geri verene kadar otomatik yanıtı durdurur."
+      },
+      {
+        "q": "Müşteri belirli bir personeli seçebilir mi?",
+        "a": "Evet. Asistan yalnızca o kişinin çalıştığı, boş olduğu ve o hizmeti verdiği saatleri önerir."
+      },
+      {
+        "q": "Müşterilerimin verileri güvende mi?",
+        "a": "Her işletmenin verisi veritabanı düzeyinde satır bazlı güvenlikle ayrılır. WhatsApp erişim anahtarları şifrelenir ve verilerinizi istediğiniz zaman dışa aktarabilirsiniz."
+      },
+      {
+        "q": "Hangi dilleri konuşuyor?",
+        "a": "Arapça, İngilizce ve Türkçe. Levant ve Körfez ağızlarını da anlar ve her zaman müşterinin dilinde yanıt verir."
+      },
+      {
+        "q": "Ne söyleyeceğini kontrol edebilir miyim?",
+        "a": "Üslubu seçin, karşılama mesajını yazın, kendi talimatlarınızı ve SSS'lerinizi ekleyin. Fiyatlar, hizmetler ve kurallar her zaman sizin belirlediklerinizden gelir."
+      },
+      {
+        "q": "Kurulum ne kadar sürer?",
+        "a": "Çoğu işletme aynı gün yayına geçer: WhatsApp numaranızı bağlayın, hizmetleri, personeli ve saatleri ekleyin, üslubu seçin."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Resepsiyonunuza Callora'yı koyun.",
+    "body": "14 gün ücretsiz. Kredi kartı gerekmez.",
+    "counterpart": "خلّي Callora على استقبالك."
+  },
+  "footer": {
+    "rights": "© {year} Callora. Tüm hakları saklıdır.",
+    "builtWith": "WhatsApp Business Platformu, Supabase ve Vercel üzerinde çalışır."
+  },
+  "auth": {
+    "loginTitle": "Tekrar hoş geldiniz",
+    "loginSubtitle": "Resepsiyonunuzu yönetmek için giriş yapın.",
+    "signupTitle": "Hesabınızı oluşturun",
+    "signupSubtitle": "Yapay zekâ resepsiyonistinizi dakikalar içinde kurun.",
+    "email": "E-posta",
+    "password": "Şifre",
+    "passwordHint": "En az 8 karakter.",
+    "fullName": "Adınız",
+    "loginButton": "Giriş yap",
+    "signupButton": "Hesap oluştur",
+    "demoButton": "Demo verileriyle keşfet",
+    "noAccount": "Callora'da yeni misiniz?",
+    "haveAccount": "Zaten hesabınız var mı?",
+    "or": "veya",
+    "invalidCredentials": "E-posta veya şifre hatalı.",
+    "emailTaken": "Bu e-posta ile kayıtlı bir hesap zaten var.",
+    "checkEmail": "Hesabınızı onaylamak için e-postanızı kontrol edin, ardından giriş yapın.",
+    "weakPassword": "En az 8 karakter kullanın.",
+    "notConfigured": "Veritabanı bağlanana kadar hesaplar kullanılamaz.",
+    "demoUnavailable": "Demo hesabı şu an kullanılamıyor."
+  },
+  "dialects": {
+    "title": "Müşterileriniz nasıl yazıyorsa öyle konuşur",
+    "body": "Levant ya da Körfez ağzı, Arabizi, İngilizce ya da Türkçe. Callora anlar ve aynı üslupla, seçtiğiniz tonda yanıt verir.",
+    "levantine": "Levant Arapçası",
+    "gulf": "Körfez Arapçası",
+    "arabizi": "Arabizi",
+    "english": "İngilizce",
+    "turkish": "Türkçe"
+  },
+  "afterHours": {
+    "title": "Siz kapalıyken de açık",
+    "body": "Müşteriler istedikleri saatte yazar. Callora gece gündüz saniyeler içinde yanıt verir; salon kapalıyken takviminiz dolar.",
+    "hours": "Çalışma saatleri",
+    "outside": "Çalışma saatleri dışında",
+    "e1": "Cumartesi için keratin randevusu oluşturdu",
+    "e2": "Otopark sorusunu yanıtladı",
+    "e3": "Manikürü pazartesiye taşıdı",
+    "e4": "Yarın 11:00'e cilt bakımı randevusu oluşturdu",
+    "e5": "Bir şikâyeti ekibe iletti"
+  }
+}
