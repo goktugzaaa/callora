@@ -12,7 +12,8 @@
     "test:watch": "vitest",
     "db:push": "supabase db push --db-url \"$SUPABASE_DB_URL\"",
     "db:types": "tsx scripts/gen-db-types.ts",
-    "db:seed": "tsx --env-file=.env.local scripts/seed.ts"
+    "db:seed": "tsx --env-file=.env.local scripts/seed.ts",
+    "whatsapp:connect": "tsx --env-file=.env.local scripts/connect-whatsapp.ts"
   },
   "dependencies": {
     "@ai-sdk/google": "^4.0.82",

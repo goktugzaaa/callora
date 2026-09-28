@@ -68,6 +68,7 @@ npm run dev                       # http://localhost:3000
 | `npm run db:push` | Apply SQL migrations to Supabase |
 | `npm run db:types` | Regenerate `database.types.ts` from the migrations |
 | `npm run db:seed` | Seed demo tenants |
+| `npm run whatsapp:connect -- <slug> <phone-number-id> <waba-id> <token>` | Connect a WhatsApp number to a business |
 
 ## Tests
 
