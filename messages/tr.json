@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Callora · WhatsApp için yapay zekâ resepsiyonist",
-    "description": "Callora, müşterilerinizi WhatsApp'ta Arapça, İngilizce ve Türkçe karşılar, gerçek randevular oluşturur ve hassas konuşmaları ekibinize devreder."
+    "description": "Callora WhatsApp mesajlarınızı ve telefon aramalarınızı Arapça, İngilizce ve Türkçe yanıtlar, gerçek randevular oluşturur ve hassas konuşmaları ekibinize devreder."
   },
   "common": {
     "brand": "Callora",
@@ -35,13 +35,14 @@
     "how": "Nasıl çalışır",
     "pricing": "Fiyatlar",
     "faq": "SSS",
-    "openMenu": "Menüyü aç"
+    "openMenu": "Menüyü aç",
+    "voice": "Sesli"
   },
   "hero": {
-    "eyebrow": "Kuaför ve klinikler için WhatsApp yapay zekâ resepsiyonisti",
+    "eyebrow": "WhatsApp ve telefon için yapay zekâ resepsiyonist",
     "titleA": "Her mesaj yanıtlanır.",
     "titleB": "Her boşluk dolar.",
-    "subtitle": "Callora müşterilerinize kendi dillerinde yanıt verir, gerçek randevular oluşturur ve zor konuşmaları ekibinize devreder.",
+    "subtitle": "Callora mesajları ve aramaları müşterinin dilinde yanıtlar, gerçek randevular oluşturur ve zor konuşmaları ekibinize devreder.",
     "counterpart": "كل محادثة لها رد، وكل موعد يُحجز."
   },
   "simulator": {
@@ -139,6 +140,7 @@
       "features": [
         "1 WhatsApp numarası",
         "3 personel takvimine kadar",
+        "Ayda 60 dakika sesli görüşme",
         "Ayda 1.000 yapay zekâ konuşması",
         "Arapça, İngilizce ve Türkçe"
       ]
@@ -149,6 +151,7 @@
       "features": [
         "Başlangıç'taki her şey",
         "10 personel takvimine kadar",
+        "Ayda 300 dakika sesli görüşme",
         "Ayda 5.000 yapay zekâ konuşması",
         "Analiz ve potansiyel müşteri takibi",
         "Öncelikli destek"
@@ -160,6 +163,7 @@
       "features": [
         "Birden çok numara ve şube",
         "Sınırsız personel",
+        "Her şube için telefon numarası",
         "Özel asistan talimatları",
         "Size özel kurulum"
       ]
@@ -172,6 +176,10 @@
       {
         "q": "Kendi WhatsApp numaramı mı kullanıyor?",
         "a": "Evet. Her işletme, Meta'nın resmi WhatsApp Business Platformu üzerinden kendi numarasını bağlar. Müşterileriniz zaten bildikleri numarayla yazışmaya devam eder."
+      },
+      {
+        "q": "Telefon aramalarını yanıtlayabilir mi?",
+        "a": "Evet, beta olarak. Aynı asistan aramaları aynı hizmetler, fiyatlar ve kurallarla karşılar; her arama gelen kutunuza yazıya dökülmüş olarak düşer. Bu sayfada tarayıcıdan deneyebilirsiniz."
       },
       {
         "q": "Asistan bir şeyi bilmediğinde ne olur?",
@@ -249,5 +257,31 @@
     "e3": "Manikürü pazartesiye taşıdı",
     "e4": "Yarın 11:00'e cilt bakımı randevusu oluşturdu",
     "e5": "Bir şikâyeti ekibe iletti"
+  },
+  "voice": {
+    "badge": "Telefon aramaları · Beta",
+    "title": "Telefona da cevap verir",
+    "body": "Aynı resepsiyonist aramaları da karşılar. Arapça, İngilizce ve Türkçe konuşmayı anlar, arayan beklerken takviminize bakar ve randevuyu oluşturur.",
+    "b1": "Aynı asistan, WhatsApp'takiyle aynı hizmetler, fiyatlar ve kurallar",
+    "b2": "Doğal konuşma: arayan istediği an sözünü kesebilir",
+    "b3": "Her arama, oluşturulan randevularla birlikte gelen kutunuza yazıya dökülür",
+    "pick": "Bir demo işletme seçin",
+    "assistantRole": "{name} · Yapay zekâ resepsiyonist",
+    "call": "{name} ile görüş",
+    "connecting": "Bağlanıyor…",
+    "listening": "Dinliyor",
+    "speaking": "{name} konuşuyor",
+    "waiting": "Karşılamayı duyunca merhaba deyin.",
+    "hint": "Fiyatları ya da çalışma saatlerini sorun veya sesle randevu alın.",
+    "you": "Siz",
+    "mute": "Sesi kapat",
+    "unmute": "Sesi aç",
+    "end": "Aramayı bitir",
+    "ended": "Arama bitti",
+    "again": "Tekrar ara",
+    "note": "Mikrofonunuzu kullanır. Aramalar 4 dakika sonra biter. Türkçe, İngilizce ya da Arapça konuşabilirsiniz.",
+    "micDenied": "Mikrofon erişimi engellendi. Aramayı denemek için tarayıcıda izin verin.",
+    "unavailable": "Sesli demo şu an kullanılamıyor.",
+    "rateLimited": "Birkaç arama yaptınız. Lütfen biraz sonra tekrar deneyin."
   }
 }

@@ -1,6 +1,6 @@
 # Callora
 
-**An AI receptionist on WhatsApp for salons, spas and clinics.** Callora answers customers in Arabic and English (and Turkish), books real appointments from a live calendar, and hands tricky conversations to the team.
+**An AI receptionist for WhatsApp and phone calls.** Callora answers the customers of salons, spas, clinics and other appointment-based businesses in Arabic and English (and Turkish), books real appointments from a live calendar, and hands tricky conversations to the team.
 
 Multi-tenant SaaS: every business connects its own WhatsApp Business number, and each business's data is isolated at the database level.
 
@@ -9,6 +9,7 @@ Multi-tenant SaaS: every business connects its own WhatsApp Business number, and
 ## What it does
 
 - **Answers on WhatsApp** through Meta's official WhatsApp Business Platform (Cloud API). One platform webhook, routed to the right business by the receiving number.
+- **Answers calls (beta).** The same assistant speaks through Gemini Live with the same instructions, tools and booking rules. The browser receives a short-lived token whose setup is locked on the server; tool calls run server-side and every call is saved as a transcript.
 - **Never invents facts.** The assistant can only answer from backend tools: business info, services and prices, availability, bookings, leads and human handover.
 - **Books for real.** Availability is computed from opening hours, split shifts, staff schedules, buffers and notice rules. A booking is confirmed only after the database accepts it; a Postgres exclusion constraint makes double bookings impossible.
 - **Hands over to humans.** Complaints and anything uncertain are flagged, auto-replies stop, and staff take over the chat.
@@ -22,6 +23,9 @@ flowchart LR
   C[Customer on WhatsApp] -->|message| M[Meta Cloud API]
   M -->|webhook, signed| W["/api/whatsapp/webhook"]
   V[Website demo] --> D["/api/demo/chat"]
+  B[Browser call] <-->|audio| G[Gemini Live]
+  G -->|tool calls| VT["/api/voice/tool"]
+  VT --> T
   W --> P[Receptionist pipeline]
   D --> P
   P --> A[AI SDK agent]

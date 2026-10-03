@@ -7,6 +7,7 @@ import { FinalCta } from "@/components/landing/final-cta";
 import { Grounded } from "@/components/landing/grounded";
 import { Hero } from "@/components/landing/hero";
 import { Pricing } from "@/components/landing/pricing";
+import { Voice } from "@/components/landing/voice";
 
 export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -16,6 +17,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     <>
       <Hero />
       <Dialects />
+      <Voice />
       <Grounded />
       <AfterHours />
       <Features />

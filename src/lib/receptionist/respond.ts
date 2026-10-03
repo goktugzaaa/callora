@@ -59,7 +59,7 @@ function isActive(profile: BusinessProfile): boolean {
   return !(profile.status === "trial" && profile.trial_ends_at && new Date(profile.trial_ends_at) < new Date());
 }
 
-async function findOrCreateConversation(msg: InboundMessage, language: Locale | null): Promise<Conversation> {
+export async function findOrCreateConversation(msg: InboundMessage, language: Locale | null): Promise<Conversation> {
   const db = createAdminClient();
   const existing = await db
     .from("conversations")

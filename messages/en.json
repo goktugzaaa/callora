@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Callora · AI receptionist for WhatsApp",
-    "description": "Callora answers your customers on WhatsApp in Arabic and English, books real appointments and hands tricky chats to your team."
+    "description": "Callora answers your WhatsApp messages and phone calls in Arabic and English, books real appointments and hands tricky conversations to your team."
   },
   "common": {
     "brand": "Callora",
@@ -35,13 +35,14 @@
     "how": "How it works",
     "pricing": "Pricing",
     "faq": "FAQ",
-    "openMenu": "Open menu"
+    "openMenu": "Open menu",
+    "voice": "Voice"
   },
   "hero": {
-    "eyebrow": "WhatsApp AI receptionist for salons and clinics",
+    "eyebrow": "AI receptionist for WhatsApp and phone calls",
     "titleA": "Every chat answered.",
     "titleB": "Every slot booked.",
-    "subtitle": "Callora answers customers in Arabic and English, books real appointments, and hands tricky chats to your team.",
+    "subtitle": "Callora answers chats and calls in Arabic and English, books real appointments, and passes tricky conversations to your team.",
     "counterpart": "كل محادثة لها رد، وكل موعد يُحجز."
   },
   "simulator": {
@@ -139,6 +140,7 @@
       "features": [
         "1 WhatsApp number",
         "Up to 3 staff calendars",
+        "60 voice minutes / month",
         "1,000 AI conversations / month",
         "Arabic and English"
       ]
@@ -149,6 +151,7 @@
       "features": [
         "Everything in Starter",
         "Up to 10 staff calendars",
+        "300 voice minutes / month",
         "5,000 AI conversations / month",
         "Analytics and lead follow-up",
         "Priority support"
@@ -160,6 +163,7 @@
       "features": [
         "Multiple numbers and branches",
         "Unlimited staff",
+        "Phone numbers for every branch",
         "Custom AI instructions",
         "Dedicated onboarding"
       ]
@@ -172,6 +176,10 @@
       {
         "q": "Does it use my own WhatsApp number?",
         "a": "Yes. Each business connects its own WhatsApp Business number through Meta's official WhatsApp Business Platform. Customers keep chatting with the number they already know."
+      },
+      {
+        "q": "Can it answer phone calls?",
+        "a": "Yes, in beta. The same assistant answers calls with the same services, prices and rules, and every call lands in your inbox as a transcript. You can try it in the browser on this page."
       },
       {
         "q": "What happens when the assistant doesn't know something?",
@@ -249,5 +257,31 @@
     "e3": "Moved a manicure to Monday",
     "e4": "Booked a facial for tomorrow at 11:00",
     "e5": "Flagged a complaint for the team"
+  },
+  "voice": {
+    "badge": "Phone calls · Beta",
+    "title": "It answers the phone, too",
+    "body": "The same receptionist takes calls. It understands Arabic and English speech, checks your calendar while the caller waits and books the slot.",
+    "b1": "Same assistant, same services, prices and rules as on WhatsApp",
+    "b2": "Natural back-and-forth: callers can interrupt it at any time",
+    "b3": "Every call is transcribed into your inbox, with what it booked",
+    "pick": "Choose a demo business",
+    "assistantRole": "{name} · AI receptionist",
+    "call": "Call {name}",
+    "connecting": "Connecting…",
+    "listening": "Listening",
+    "speaking": "{name} is speaking",
+    "waiting": "Say hello once you hear the greeting.",
+    "hint": "Ask about prices or opening hours, or book an appointment by voice.",
+    "you": "You",
+    "mute": "Mute",
+    "unmute": "Unmute",
+    "end": "End call",
+    "ended": "Call ended",
+    "again": "Call again",
+    "note": "Uses your microphone. Calls end after 4 minutes. Speak English, Arabic or Turkish.",
+    "micDenied": "Microphone access was blocked. Allow it in your browser to try the call.",
+    "unavailable": "The voice demo isn't available right now.",
+    "rateLimited": "You've made several calls already. Please try again a little later."
   }
 }
