@@ -1,13 +1,10 @@
 import { ArrowRightIcon, WhatsappLogoIcon } from "@phosphor-icons/react/dist/ssr";
-import { getLocale, getTranslations } from "next-intl/server";
+import { getTranslations } from "next-intl/server";
 import { LiveDemo } from "@/components/demo/live-demo";
 import { buttonVariants } from "@/components/ui/button";
 
 export async function Hero() {
   const t = await getTranslations();
-  const locale = await getLocale();
-  // The headline is echoed in the other main language: Callora is bilingual at heart.
-  const counterpartLang = locale === "ar" ? "en" : "ar";
 
   return (
     <section className="relative isolate overflow-hidden">
@@ -28,10 +25,6 @@ export async function Hero() {
             <span className="block">{t("hero.titleA")}</span>
             <span className="block text-primary">{t("hero.titleB")}</span>
           </h1>
-          <p className="mt-4 text-xl font-medium text-muted-foreground/80 sm:text-2xl">
-            <bdi lang={counterpartLang}>{t("hero.counterpart")}</bdi>
-          </p>
-
           <p className="mt-6 max-w-[44ch] text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg">
             {t("hero.subtitle")}
           </p>

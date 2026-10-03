@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "Callora · WhatsApp için yapay zekâ resepsiyonist",
-    "description": "Callora WhatsApp mesajlarınızı ve telefon aramalarınızı Arapça, İngilizce ve Türkçe yanıtlar, gerçek randevular oluşturur ve hassas konuşmaları ekibinize devreder."
+    "title": "Callora · WhatsApp ve telefon için yapay zekâ resepsiyonist",
+    "description": "Callora WhatsApp mesajlarınızı ve telefon aramalarınızı müşterinizin dilinde yanıtlar, gerçek randevular oluşturur ve hassas konuşmaları ekibinize devreder."
   },
   "common": {
     "brand": "Callora",
@@ -42,8 +42,7 @@
     "eyebrow": "WhatsApp ve telefon için yapay zekâ resepsiyonist",
     "titleA": "Her mesaj yanıtlanır.",
     "titleB": "Her boşluk dolar.",
-    "subtitle": "Callora mesajları ve aramaları müşterinin dilinde yanıtlar, gerçek randevular oluşturur ve zor konuşmaları ekibinize devreder.",
-    "counterpart": "كل محادثة لها رد، وكل موعد يُحجز."
+    "subtitle": "Callora mesajları ve aramaları müşterinizin dilinde yanıtlar, gerçek randevular oluşturur ve zor konuşmaları ekibinize devreder."
   },
   "simulator": {
     "label": "Canlı demo",
@@ -87,7 +86,7 @@
     "assistant": "Callora",
     "database": "Verileriniz",
     "stepAsk": "Perşembe akşamı balyaj için yer var mı?",
-    "stepReply": "Perşembe 17:00'de Omar müsait. Randevunuzu oluşturayım mı?",
+    "stepReply": "Perşembe 17:00'de James müsait. Randevunuzu oluşturayım mı?",
     "stepConfirm": "Perşembe 17:00 için randevunuz oluşturuldu. Randevu numaranız 7F3A91C2.",
     "guard": "Aynı kişiye ait iki randevu asla çakışamaz. Veritabanı bunu reddeder, bu yüzden asistan dolu bir saati vaat edemez.",
     "stepYes": "Evet, lütfen"
@@ -118,14 +117,14 @@
     "rules": {
       "title": "Kurallar sizin, modelin değil",
       "body": "Bölünmüş vardiyalar, randevu araları, bildirim süreleri ve hangi hizmeti kimin verdiği.",
-      "r1": "Cuma 14:00-20:00",
+      "r1": "Perşembe 21:00'e kadar açık",
       "r2": "Müşteriler arası 10 dakika",
       "r3": "En geç 4 saat önce iptal",
-      "r4": "Omar yalnızca boya yapar"
+      "r4": "James yalnızca boya yapar"
     },
     "menu": {
-      "title": "Hizmet listeniz, iki dilde",
-      "body": "Asistanın kelimesi kelimesine aktardığı hizmetler, fiyatlar ve süreler."
+      "title": "Hizmet listeniz, her dilde",
+      "body": "Hizmetler, fiyatlar ve süreler müşterinin dilinde birebir aktarılır."
     }
   },
   "pricing": {
@@ -142,7 +141,7 @@
         "3 personel takvimine kadar",
         "Ayda 60 dakika sesli görüşme",
         "Ayda 1.000 yapay zekâ konuşması",
-        "Arapça, İngilizce ve Türkçe"
+        "Tüm diller"
       ]
     },
     "growth": {
@@ -168,7 +167,7 @@
         "Size özel kurulum"
       ]
     },
-    "subtitle": "Lansman fiyatları. Tüm paketler Arapça ve İngilizce konuşur."
+    "subtitle": "Lansman fiyatları. Tüm paketler her dili konuşur."
   },
   "faq": {
     "title": "Sık sorulan sorular",
@@ -195,7 +194,7 @@
       },
       {
         "q": "Hangi dilleri konuşuyor?",
-        "a": "Arapça, İngilizce ve Türkçe. Levant ve Körfez ağızlarını da anlar ve her zaman müşterinin dilinde yanıt verir."
+        "a": "İngilizce, Türkçe, Arapça, Almanca, İspanyolca ve daha birçoğu. Her zaman müşterinin dilinde yanıt verir ve yerel ağızları da anlar."
       },
       {
         "q": "Ne söyleyeceğini kontrol edebilir miyim?",
@@ -209,8 +208,7 @@
   },
   "cta": {
     "title": "Resepsiyonunuza Callora'yı koyun.",
-    "body": "İngilizce ya da Arapça randevu oluşturmasını izleyin.",
-    "counterpart": "خلّي Callora على استقبالك."
+    "body": "Kendi dilinizde randevu oluşturmasını izleyin."
   },
   "footer": {
     "rights": "© {year} Callora. Tüm hakları saklıdır.",
@@ -239,13 +237,8 @@
     "demoUnavailable": "Demo hesabı şu an kullanılamıyor."
   },
   "dialects": {
-    "title": "Müşterileriniz nasıl yazıyorsa öyle konuşur",
-    "body": "Levant ya da Körfez ağzı, Arabizi, İngilizce ya da Türkçe. Callora anlar ve aynı üslupla, seçtiğiniz tonda yanıt verir.",
-    "levantine": "Levant Arapçası",
-    "gulf": "Körfez Arapçası",
-    "arabizi": "Arabizi",
-    "english": "İngilizce",
-    "turkish": "Türkçe"
+    "title": "Müşterinizin dilini konuşur",
+    "body": "İngilizce, Türkçe, Arapça, Almanca, İspanyolca ve daha fazlası. Callora her müşteriye yazdığı dilde, seçtiğiniz üslupla yanıt verir."
   },
   "afterHours": {
     "title": "Siz kapalıyken de açık",
@@ -261,7 +254,7 @@
   "voice": {
     "badge": "Telefon aramaları · Beta",
     "title": "Telefona da cevap verir",
-    "body": "Aynı resepsiyonist aramaları da karşılar. Arapça, İngilizce ve Türkçe konuşmayı anlar, arayan beklerken takviminize bakar ve randevuyu oluşturur.",
+    "body": "Aynı resepsiyonist aramaları da karşılar. İngilizce, Türkçe, Arapça ve daha fazlasını anlar; arayan beklerken takviminize bakar ve randevuyu oluşturur.",
     "b1": "Aynı asistan, WhatsApp'takiyle aynı hizmetler, fiyatlar ve kurallar",
     "b2": "Doğal konuşma: arayan istediği an sözünü kesebilir",
     "b3": "Her arama, oluşturulan randevularla birlikte gelen kutunuza yazıya dökülür",
@@ -279,7 +272,7 @@
     "end": "Aramayı bitir",
     "ended": "Arama bitti",
     "again": "Tekrar ara",
-    "note": "Mikrofonunuzu kullanır. Aramalar 4 dakika sonra biter. Türkçe, İngilizce ya da Arapça konuşabilirsiniz.",
+    "note": "Mikrofonunuzu kullanır. Aramalar 4 dakika sonra biter. İstediğiniz dilde konuşabilirsiniz.",
     "micDenied": "Mikrofon erişimi engellendi. Aramayı denemek için tarayıcıda izin verin.",
     "unavailable": "Sesli demo şu an kullanılamıyor.",
     "rateLimited": "Birkaç arama yaptınız. Lütfen biraz sonra tekrar deneyin."

@@ -23,7 +23,8 @@ import { cn } from "cn";
 import { Button } from "@/components/ui/button";
 import { CALL_START_MARKER, MAX_CALL_MS, VOICE_MODEL } from "@/lib/voice/constants";
 import { summarizeAction, type ActionLike } from "./action-summary";
-import { DEMO_BUSINESSES } from "./demo-businesses";
+import { DEFAULT_DEMO_BUSINESS, DEMO_BUSINESSES } from "./demo-businesses";
+import type { Locale } from "@/i18n/locales";
 
 // Browser phone call with the same receptionist that answers WhatsApp.
 // Audio goes straight to Gemini Live; tool calls go to /api/voice/tool and run
@@ -34,12 +35,6 @@ const sessionConfig = {
   outputModalities: ["audio" as const],
   inputAudioTranscription: {},
   outputAudioTranscription: {},
-};
-
-const ASSISTANT_NAMES: Record<string, string> = {
-  "lumiere-amman": "Layla",
-  "serenity-dubai": "Noor",
-  "nova-istanbul": "Elif",
 };
 
 const ICONS: Record<string, ComponentType<{ className?: string }>> = {
@@ -82,7 +77,7 @@ export default function VoiceCall() {
   const locale = useLocale();
   const reduceMotion = useReducedMotion();
 
-  const [slug, setSlug] = useState(locale === "tr" ? "nova-istanbul" : "lumiere-amman");
+  const [slug, setSlug] = useState(DEFAULT_DEMO_BUSINESS[locale as Locale] ?? DEMO_BUSINESSES[0].slug);
   const [sessionId, setSessionId] = useState(() => crypto.randomUUID());
   const [phase, setPhase] = useState<Phase>("idle");
   const [error, setError] = useState<ErrorKind | null>(null);
@@ -95,7 +90,7 @@ export default function VoiceCall() {
   const endCallRef = useRef<() => void>(() => {});
 
   const business = DEMO_BUSINESSES.find((b) => b.slug === slug) ?? DEMO_BUSINESSES[0];
-  const assistantName = ASSISTANT_NAMES[slug] ?? "Callora";
+  const assistantName = business.assistant;
 
   const api = useMemo(
     () => ({ token: `/api/voice/token?business=${slug}&session=${sessionId}&locale=${locale}` }),

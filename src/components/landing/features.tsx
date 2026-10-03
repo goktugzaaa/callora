@@ -15,9 +15,9 @@ import { Reveal } from "@/components/motion/reveal";
 // not screenshots. Row 1: takeover (4) + rules (2). Row 2: menu, security, analytics.
 
 const MENU = [
-  { en: "Haircut & Blow-dry", ar: "قص وتجفيف الشعر", min: 60, price: "25 JOD" },
-  { en: "Gel Manicure", ar: "مانيكير جل", min: 60, price: "18 JOD" },
-  { en: "Balayage", ar: "بالياج", min: 180, price: "120+ JOD" },
+  { names: { en: "Haircut & Blow-dry", tr: "Saç Kesimi ve Fön", ar: "قص وتجفيف الشعر" }, min: 60, price: "£55" },
+  { names: { en: "Gel Manicure", tr: "Kalıcı Oje Manikür", ar: "مانيكير جل" }, min: 60, price: "£35" },
+  { names: { en: "Balayage", tr: "Balyaj", ar: "بالياج" }, min: 180, price: "£180+" },
 ];
 
 // Illustrative week, shown with a "sample data" label.
@@ -52,9 +52,9 @@ export async function Features() {
               <div className="mt-auto grid border-t border-border sm:grid-cols-[minmax(0,15rem)_minmax(0,1fr)]">
                 <ul className="divide-y divide-border bg-surface-sunken/60 text-sm">
                   {[
-                    { name: "Dima Mansour", text: t("takeover.c1"), time: "21:14", flag: true },
-                    { name: "Sara Haddad", text: t("takeover.c2"), time: "20:02", flag: false },
-                    { name: "Maya Nasser", text: t("takeover.c3"), time: "18:45", flag: false },
+                    { name: "Charlotte Evans", text: t("takeover.c1"), time: "21:14", flag: true },
+                    { name: "Zeynep Aksoy", text: t("takeover.c2"), time: "20:02", flag: false },
+                    { name: "Hannah Wilson", text: t("takeover.c3"), time: "18:45", flag: false },
                   ].map((row) => (
                     <li key={row.name} className={cn("flex gap-3 px-4 py-3", row.flag && "bg-warning-soft/60")}>
                       <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-secondary text-[11px] font-semibold">
@@ -125,13 +125,13 @@ export async function Features() {
               <p className="mt-2 text-pretty leading-relaxed text-muted-foreground">{t("menu.body")}</p>
               <ul className="mt-6 space-y-3">
                 {MENU.map((item) => (
-                  <li key={item.en} className="flex items-baseline justify-between gap-4 border-b border-dashed border-border pb-3 last:border-0 last:pb-0">
+                  <li key={item.names.en} className="flex items-baseline justify-between gap-4 border-b border-dashed border-border pb-3 last:border-0 last:pb-0">
                     <span className="min-w-0">
                       <span className="block text-sm font-medium">
-                        <bdi lang="en">{item.en}</bdi>
+                        <bdi lang="en">{item.names.en}</bdi>
                       </span>
-                      <span className="block text-sm text-muted-foreground">
-                        <bdi lang="ar">{item.ar}</bdi>
+                      <span className="block truncate text-sm text-muted-foreground">
+                        <bdi lang="tr">{item.names.tr}</bdi> · <bdi lang="ar">{item.names.ar}</bdi>
                       </span>
                     </span>
                     <span className="shrink-0 text-end">
@@ -156,7 +156,7 @@ export async function Features() {
               <h3 className="mt-5 text-xl font-semibold tracking-tight">{t("security.title")}</h3>
               <p className="mt-2 text-pretty leading-relaxed text-[oklch(0.95_0.02_45)]">{t("security.body")}</p>
               <ul className="mt-6 space-y-2 text-sm">
-                {["Lumière · Amman", "Serenity · Dubai", "Nova · İstanbul"].map((name) => (
+                {["Lumière · London", "Nova · İstanbul", "Serenity · Dubai"].map((name) => (
                   <li key={name} className="flex items-center gap-2.5 rounded-xl bg-black/15 px-3 py-2 backdrop-blur-sm">
                     <WhatsappLogoIcon weight="fill" className="size-4 shrink-0" />
                     <span className="flex-1 truncate">{name}</span>

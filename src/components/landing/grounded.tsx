@@ -48,7 +48,7 @@ export async function Grounded() {
 
   const steps: Step[] = [
     { kind: "say", lane: 0, text: t("stepAsk") },
-    { kind: "call", fn: "checkAvailability", args: "balayage, Thu", result: "17:00 · Omar", icon: CalendarCheckIcon },
+    { kind: "call", fn: "checkAvailability", args: "balayage, Thu", result: "17:00 · James", icon: CalendarCheckIcon },
     { kind: "say", lane: 1, text: t("stepReply") },
     { kind: "say", lane: 0, text: t("stepYes") },
     { kind: "call", fn: "createBooking", args: "balayage, Thu 17:00", result: "ok · 7F3A91C2", icon: CheckCircleIcon },

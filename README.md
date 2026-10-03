@@ -1,6 +1,6 @@
 # Callora
 
-**An AI receptionist for WhatsApp and phone calls.** Callora answers the customers of salons, spas, clinics and other appointment-based businesses in Arabic and English (and Turkish), books real appointments from a live calendar, and hands tricky conversations to the team.
+**An AI receptionist for WhatsApp and phone calls.** Callora answers the customers of salons, spas, clinics and other appointment-based businesses in their own language (English, Turkish, Arabic, German, Spanish and more), books real appointments from a live calendar, and hands tricky conversations to the team.
 
 Multi-tenant SaaS: every business connects its own WhatsApp Business number, and each business's data is isolated at the database level.
 
@@ -13,7 +13,7 @@ Multi-tenant SaaS: every business connects its own WhatsApp Business number, and
 - **Never invents facts.** The assistant can only answer from backend tools: business info, services and prices, availability, bookings, leads and human handover.
 - **Books for real.** Availability is computed from opening hours, split shifts, staff schedules, buffers and notice rules. A booking is confirmed only after the database accepts it; a Postgres exclusion constraint makes double bookings impossible.
 - **Hands over to humans.** Complaints and anything uncertain are flagged, auto-replies stop, and staff take over the chat.
-- **Speaks like the customer.** Levantine and Gulf Arabic, Arabizi, English and Turkish, in the tone the business chooses.
+- **Speaks the customer's language.** Replies in whatever language the customer writes or speaks, including regional dialects, in the tone the business chooses.
 - **Website demo** that runs the exact same pipeline as WhatsApp.
 
 ## Architecture

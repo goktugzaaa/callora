@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "Callora · AI receptionist for WhatsApp",
-    "description": "Callora answers your WhatsApp messages and phone calls in Arabic and English, books real appointments and hands tricky conversations to your team."
+    "title": "Callora · AI receptionist for WhatsApp and phone calls",
+    "description": "Callora answers your WhatsApp messages and phone calls in your customers' language, books real appointments and hands tricky conversations to your team."
   },
   "common": {
     "brand": "Callora",
@@ -42,8 +42,7 @@
     "eyebrow": "AI receptionist for WhatsApp and phone calls",
     "titleA": "Every chat answered.",
     "titleB": "Every slot booked.",
-    "subtitle": "Callora answers chats and calls in Arabic and English, books real appointments, and passes tricky conversations to your team.",
-    "counterpart": "كل محادثة لها رد، وكل موعد يُحجز."
+    "subtitle": "Callora answers chats and calls in your customers' language, books real appointments, and passes tricky conversations to your team."
   },
   "simulator": {
     "label": "Live demo",
@@ -87,7 +86,7 @@
     "assistant": "Callora",
     "database": "Your data",
     "stepAsk": "Is there time for balayage on Thursday evening?",
-    "stepReply": "Thursday at 5:00 PM with Omar is free. Shall I book it?",
+    "stepReply": "Thursday at 5:00 PM with James is free. Shall I book it?",
     "stepConfirm": "Booked for Thursday, 5:00 PM. Your reference is 7F3A91C2.",
     "guard": "Two bookings can never overlap for the same person. The database rejects it, so the assistant can't promise a taken slot.",
     "stepYes": "Yes please"
@@ -118,14 +117,14 @@
     "rules": {
       "title": "Your rules, not the model's",
       "body": "Split shifts, buffers, notice periods and who does which service.",
-      "r1": "Friday 14:00-20:00",
+      "r1": "Late opening on Thursday until 21:00",
       "r2": "10 minutes between clients",
       "r3": "Cancel up to 4 hours before",
-      "r4": "Omar does colour only"
+      "r4": "James does colour only"
     },
     "menu": {
-      "title": "Your menu, in both languages",
-      "body": "Services, prices and durations the assistant quotes word for word."
+      "title": "Your menu, in every language",
+      "body": "Services, prices and durations, quoted word for word in the customer's language."
     }
   },
   "pricing": {
@@ -142,7 +141,7 @@
         "Up to 3 staff calendars",
         "60 voice minutes / month",
         "1,000 AI conversations / month",
-        "Arabic and English"
+        "Every language"
       ]
     },
     "growth": {
@@ -168,7 +167,7 @@
         "Dedicated onboarding"
       ]
     },
-    "subtitle": "Launch pricing. Every plan speaks Arabic and English."
+    "subtitle": "Launch pricing. Every plan speaks every language."
   },
   "faq": {
     "title": "Questions, answered",
@@ -195,7 +194,7 @@
       },
       {
         "q": "Which languages does it speak?",
-        "a": "Arabic and English out of the box, including Levantine and Gulf phrasing, plus Turkish. It always answers in the customer's language."
+        "a": "English, Turkish, Arabic, German, Spanish and many more. It always answers in the customer's language and understands regional dialects."
       },
       {
         "q": "Can I control what it says?",
@@ -209,8 +208,7 @@
   },
   "cta": {
     "title": "Put Callora on your front desk.",
-    "body": "Watch it book an appointment in English or Arabic.",
-    "counterpart": "خلّي Callora على استقبالك."
+    "body": "Watch it book an appointment in your language."
   },
   "footer": {
     "rights": "© {year} Callora. All rights reserved.",
@@ -239,13 +237,8 @@
     "demoUnavailable": "The demo account is not available right now."
   },
   "dialects": {
-    "title": "Speaks the way your customers write",
-    "body": "Levantine, Gulf, Arabizi, English or Turkish. Callora understands it and replies in kind, in the tone you choose.",
-    "levantine": "Levantine Arabic",
-    "gulf": "Gulf Arabic",
-    "arabizi": "Arabizi",
-    "english": "English",
-    "turkish": "Turkish"
+    "title": "Speaks your customers' language",
+    "body": "English, Turkish, Arabic, German, Spanish and more. Callora answers each customer in the language they write in, in the tone you choose."
   },
   "afterHours": {
     "title": "Open when you're closed",
@@ -261,7 +254,7 @@
   "voice": {
     "badge": "Phone calls · Beta",
     "title": "It answers the phone, too",
-    "body": "The same receptionist takes calls. It understands Arabic and English speech, checks your calendar while the caller waits and books the slot.",
+    "body": "The same receptionist takes calls. It understands speech in English, Turkish, Arabic and more, checks your calendar while the caller waits and books the slot.",
     "b1": "Same assistant, same services, prices and rules as on WhatsApp",
     "b2": "Natural back-and-forth: callers can interrupt it at any time",
     "b3": "Every call is transcribed into your inbox, with what it booked",
@@ -279,7 +272,7 @@
     "end": "End call",
     "ended": "Call ended",
     "again": "Call again",
-    "note": "Uses your microphone. Calls end after 4 minutes. Speak English, Arabic or Turkish.",
+    "note": "Uses your microphone. Calls end after 4 minutes. Speak in any language.",
     "micDenied": "Microphone access was blocked. Allow it in your browser to try the call.",
     "unavailable": "The voice demo isn't available right now.",
     "rateLimited": "You've made several calls already. Please try again a little later."
